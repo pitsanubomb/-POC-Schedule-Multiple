@@ -1,5 +1,11 @@
 import { ChangeRoomStatusService } from './tasks/ChangeRoomStatus.service';
-import { Controller, Get, Logger } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Logger,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import * as dayjs from 'dayjs';
 
@@ -29,7 +35,7 @@ export class AppController {
       );
     } catch (error) {
       Logger.error(`Error add task`, { error });
-      throw new Error(`Error sample`);
+      throw new HttpException(`Forbidden`, HttpStatus.FORBIDDEN);
     }
 
     return 'success';
@@ -49,7 +55,7 @@ export class AppController {
       );
     } catch (error) {
       Logger.error(`Error update task`, { error });
-      throw new Error(`Error sample`);
+      throw new HttpException(`Forbidden`, HttpStatus.FORBIDDEN);
     }
 
     return 'success';
