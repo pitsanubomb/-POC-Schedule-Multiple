@@ -21,9 +21,9 @@ export class AppController {
       const now = dayjs();
       const testNext = dayjs().add(30, 'second'); //Example set to 30 sec to do something
       const milliseconds = dayjs(testNext).diff(now);
-
+      const timestamp = new Date().getTime().toString();
       this.changeRoomStatusService.changeStatusWithTimeOut(
-        new Date().toDateString(),
+        timestamp,
         milliseconds,
       );
     } catch (error) {
